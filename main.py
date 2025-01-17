@@ -12,20 +12,21 @@ import webbrowser
 
 
 def menu():
-    print("Selecciona una opción:")
-    print("1. Insertar un nuevo paciente")
-    print("2. Realizar consulta con paciente introducido")
-    print("3. Generar reglas")
-    print("4. Realizar consulta con pacientes de ejemplo")
-    print("5. Salir")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print("Select an option:")
+    print("1. Insert a new patient")
+    print("2. Make a query with the entered patient")
+    print("3. Generate rules")
+    print("4. Make a query with example patients")
+    print("5. Exit")
 
 
 def insert_new_patient(columns):
-    #patient_id = input("Introduce el ID del nuevo paciente: ")
+    #patient_id = input("Enter the new patient's ID: ")
     translate_and_insert_new_patient("Generated", columns)#patient_id
 
 
-def consulta_con_pacientes_de_ejemplo(df):
+def query_with_example_patients(df):
     rule_files = 'rules_with_explainability.pl'
     # Save examples in Prolog format
     dataset_examples = save_examples_to_prolog(df, percentage=2)
@@ -38,28 +39,28 @@ def consulta_con_pacientes_de_ejemplo(df):
     print(f"\nFinal file generated: {final_prolog_file}")
 
     # Make consult
-    # Rute to scasp
+    # Route to scasp
     scasp_path = '/home/walter/.ciao/build/bin/scasp'  # put yours here
     # Execute
     command = f'bash -i -c "{scasp_path} {final_prolog_file} --tree --html --human --short"'
     output_file = 'output_consult.txt'
     execute_command(command, output_file)
 
-    # Abrir el archivo HTML generado en el navegador
-    html_file = os.path.abspath(final_prolog_file.replace(".pl", ".html"))  # Ruta absoluta
+    # Open the generated HTML file in the browser
+    html_file = os.path.abspath(final_prolog_file.replace(".pl", ".html"))  # Absolute path
     if os.path.exists(html_file):
         webbrowser.open(f"file://{html_file}")
     else:
-        print(f"Error: No se encontró el archivo HTML en {html_file}")
+        print(f"Error: HTML file not found at {html_file}")
 
 
-def consulta_con_pacientes_introducido():
+def query_with_entered_patient():
     new_patient = "patientGenerated.pl"
-    # Leer el archivo del paciente generado
+    # Read the generated patient's file
     with open(new_patient, 'r') as f:
-        new_patient_examples = [line.strip() for line in f if line.strip()]  # Convertir líneas en lista y omitir vacías
+        new_patient_examples = [line.strip() for line in f if line.strip()]  # Convert lines to list and omit empty ones
 
-    # Rute to scasp
+    # Route to scasp
     scasp_path = '/home/walter/.ciao/build/bin/scasp'  # put yours here
     # Execute
     file_name = 'rules_with_explainability.pl'
@@ -72,13 +73,12 @@ def consulta_con_pacientes_introducido():
     output_file = 'output_consult.txt'
     execute_command(command, output_file)
 
-    # Abrir el archivo HTML generado en el navegador
-    html_file = os.path.abspath(inter_file.replace(".pl", ".html"))  # Ruta absoluta
+    # Open the generated HTML file in the browser
+    html_file = os.path.abspath(inter_file.replace(".pl", ".html"))  # Absolute path
     if os.path.exists(html_file):
         webbrowser.open(f"file://{html_file}")
     else:
-        print(f"Error: No se encontró el archivo HTML en {html_file}")
-
+        print(f"Error: HTML file not found at {html_file}")
 
 
 def train_random_forest(X, y):
@@ -135,21 +135,21 @@ def main():
     df, X, y, columns = load_dataset()
     while True:
         menu()
-        choice = input("Introduce el número de opción: ")
+        choice = input("Enter the option number: ")
 
-        if choice == "1": # Insertar paciente nuevo
+        if choice == "1": # Insert new patient
             insert_new_patient(columns)
-        elif choice == "2": # Consulta con paciente introducido
-            consulta_con_pacientes_introducido()
-        elif choice == "3": # Generar reglas
+        elif choice == "2": # Query with entered patient
+            query_with_entered_patient()
+        elif choice == "3": # Generate rules
             generate_rules(X, y, df)
-        elif choice == "4": # Hacer consulta con pacientes de ejemplo
-            consulta_con_pacientes_de_ejemplo(df)
+        elif choice == "4": # Make query with example patients
+            query_with_example_patients(df)
         elif choice == "5":
-            print("Saliendo...")
+            print("Exiting...")
             break
         else:
-            print("Opción no válida, por favor intenta de nuevo.")
+            print("Invalid option, please try again.")
 
 
 if __name__ == "__main__":
