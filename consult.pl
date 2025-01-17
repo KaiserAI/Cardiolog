@@ -1,0 +1,1 @@
+?- findall(diagnosis(Z,Y,X), diagnosis(Z, Y, X), List).
