@@ -1,0 +1,479 @@
+<!doctype html>
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>c(ASP) Justification</title>
+ <style>
+.treemenu li { list-style: none; }
+.treemenu .toggler { cursor: pointer; }
+.treemenu .toggler:before { display: inline-block; margin-right: 2pt; }
+li.tree-empty > .toggler { opacity: 0.3; cursor: default; }
+li.tree-empty > .toggler:before { content: " "; }
+li.tree-closed > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: transparent blue;
+    border-style: solid;
+    border-width: 0.25em 0 0.25em 0.5em;
+}
+li.tree-opened > .toggler:before {
+    content: "";
+    height: 0;
+    width: 0;
+    border-color: blue transparent ;
+    border-style: solid;
+    border-width: 0.5em 0.25em 0 0.25em;
+}
+</style>
+ 
+ <link rel="icon" href="logo.ico">
+ 
+ </head>
+ 
+ <body style="font-size:15px;background: #ECECEC; margin:80px; color:#333;">
+ 
+<h3>Query:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I would like to know if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All done<br>
+
+<br>
+<h3>Answer:</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes, I found that<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when List is [diagnosis(patient93,1,Dr. Smith),diagnosis(patient3,0,Dr. Smith),diagnosis(patient295,0,Dr. Smith),diagnosis(patient302,0,Dr. Smith),diagnosis(patient248,0,Dr. Johnson),diagnosis(patient295,0,Dr. Johnson),diagnosis(patient302,0,Dr. Johnson),diagnosis(patient93,0,Dra. Lee),diagnosis(patient302,0,Dra. Lee),diagnosis(patient3,1,Dra. Lee),diagnosis(patient93,0,Dra. Davis),diagnosis(patient3,0,Dra. Davis),diagnosis(patient118,1,Dra. Davis)]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All done<br>
+
+<br>
+
+<br><br>
+<h3> Justification: <button onclick="expand()">Expand All</button><button onclick="depth(+1)">+1</button><button onclick="depth(-1)">-1</button><button onclick="collapse()">Collapse All</button></h3>
+
+
+ <ul class="tree">
+
+
+     <li> 
+     All done, because
+         <ul>
+         <li> 
+         Dr. Smith said that patient93 is at the gates of heaven, because
+             <ul>
+             <li> 
+             hasn`t exercise-induced angina, and
+             </li> 
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 0.6, and
+             </li> 
+             <li> 
+             has a cholesterol level of 141 mg/dl.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dr. Smith  said that patient3 is fresh like a daisy, because
+             <ul>
+             <li> 
+             hasn`t exercise-induced angina, and
+             </li> 
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 3.5, and
+             </li> 
+             <li> 
+             has a cholesterol level of 250 mg/dl.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dr. Smith  said that patient295 is fresh like a daisy, because
+             <ul>
+             <li> 
+             hasn`t exercise-induced angina, and
+             </li> 
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 0, and
+             </li> 
+             <li> 
+             has a cholesterol level of 157 mg/dl.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dr. Smith  said that patient302 is fresh like a daisy, because
+             <ul>
+             <li> 
+             hasn`t exercise-induced angina, and
+             </li> 
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 0, and
+             </li> 
+             <li> 
+             has a cholesterol level of 175 mg/dl.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dr. Johnson  said that patient248 is fresh like a daisy, because
+             <ul>
+             <li> 
+             is 52 years old, and
+             </li> 
+             <li> 
+             has an upsloping ST segment during peak exercise, and
+             </li> 
+             <li> 
+             has a resting blood pressure of 125 mm/HG, and
+             </li> 
+             <li> 
+             is male.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dr. Johnson  said that patient295 is fresh like a daisy, because
+             <ul>
+             <li> 
+             is 41 years old, and
+             </li> 
+             <li> 
+             has an upsloping ST segment during peak exercise, and
+             </li> 
+             <li> 
+             has a resting blood pressure of 120 mm/HG, and
+             </li> 
+             <li> 
+             is male.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dr. Johnson  said that patient302 is fresh like a daisy, because
+             <ul>
+             <li> 
+             is 38 years old, and
+             </li> 
+             <li> 
+             has an upsloping ST segment during peak exercise, and
+             </li> 
+             <li> 
+             has a resting blood pressure of 138 mm/HG, and
+             </li> 
+             <li> 
+             is male.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dra. Lee  said that patient93 is fresh like a daisy, because
+             <ul>
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has non-anginal pain, and
+             </li> 
+             <li> 
+             has a maximum heart rate of 175, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 0.6.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dra. Lee  said that patient302 is fresh like a daisy, because
+             <ul>
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has non-anginal pain, and
+             </li> 
+             <li> 
+             has a maximum heart rate of 173, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 0.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dra. Lee said that patient3 is at the gates of heaven, because
+             <ul>
+             <li> 
+             has normal blood flow, and
+             </li> 
+             <li> 
+             has non-anginal pain, and
+             </li> 
+             <li> 
+             has a maximum heart rate of 187, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 3.5.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dra. Davis  said that patient93 is fresh like a daisy, because
+             <ul>
+             <li> 
+             has non-anginal pain, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 0.6, and
+             </li> 
+             <li> 
+             has a flat ST segment during peak exercise, and
+             </li> 
+             <li> 
+             has a normal fasting blood sugar level.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dra. Davis  said that patient3 is fresh like a daisy, because
+             <ul>
+             <li> 
+             has non-anginal pain, and
+             </li> 
+             <li> 
+             has exercise-induced ST depression of 3.5, and
+             </li> 
+             <li> 
+             has a maximum heart rate of 187, and
+             </li> 
+             <li> 
+             hasn`t exercise-induced angina.
+             </li> 
+             </ul> 
+         </li> 
+         <li> 
+         Dra. Davis said that patient118 is at the gates of heaven, because
+             <ul>
+             <li> 
+             is asymptomatic, and
+             </li> 
+             <li> 
+             has a maximum heart rate of 132, and
+             </li> 
+             <li> 
+             has a reversible defect.
+             </li> 
+             </ul> 
+         </li> 
+         </ul> 
+     </li> 
+     <li> 
+     The global constraints hold.
+     </li> 
+ </ul> 
+
+<script
+  src="https://code.jquery.com/jquery-1.11.2.min.js"
+  integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    (function($){
+        $.fn.depth = function(options,depth) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    if (depth > 0) {
+                        e.addClass('tree-opened');
+                        e.removeClass('tree-closed');
+
+                        //subtree.slideDown(options.delay);
+                        subtree.show(options.delay);
+
+                        subtree.depth(options,depth-1);
+                    } else {
+                        e.removeClass('tree-opened');
+                        e.addClass('tree-closed');
+
+                        //subtree.slideUp(options.delay);
+                        subtree.hide(options.delay);
+
+                        subtree.collapse(options);
+                    }
+                }
+            });
+            return true;
+        }
+        
+        $.fn.expand = function(options,depth) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.addClass('tree-opened');
+                    e.removeClass('tree-closed');
+
+                    //subtree.slideDown(options.delay);
+                    subtree.show(options.delay);
+
+                    subtree.expand(options,depth+1);
+                }
+                //g_depth=Math.max(g_depth,depth);
+            });
+            return true;
+        }
+
+        $.fn.collapse = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            
+            this.find("> li").each(function() {
+                e = $(this)
+                var subtree = e.find('> ul');
+
+                if (subtree.length > 0) {
+                    e.removeClass('tree-opened');
+                    e.addClass('tree-closed');
+
+                    subtree.slideUp(options.delay);
+                    subtree.hide(options.delay);
+
+                    subtree.collapse(options);
+                } 
+            });
+            return true;
+        }
+        
+        $.fn.treemenu = function(options) {
+            options = options || {};
+            options.delay = options.delay || 0;
+            options.openActive = options.openActive || false;
+            options.closeOther = options.closeOther || false;
+            options.activeSelector = options.activeSelector || ".active";
+
+            this.addClass("treemenu");
+
+            if (!options.nonroot) {
+                this.addClass("treemenu-root");
+            }
+
+            options.nonroot = true;
+
+            this.find("> li").each(function() {
+                e = $(this);
+                var subtree = e.find('> ul');
+                var button = e.find('.toggler').eq(0);
+
+                if(button.length == 0) {
+                    // create toggler
+                    var button = $('<span>');
+                    button.addClass('toggler');
+                    e.prepend(button);
+                }
+
+                if(subtree.length > 0) {
+                    subtree.hide();
+
+                    e.addClass('tree-closed');
+
+                    e.find(button).click(function() {
+                        var li = $(this).parent('li');
+
+                        if (options.closeOther && li.hasClass('tree-closed')) {
+                            var siblings = li.parent('ul').find("li:not(.tree-empty)");
+                            siblings.removeClass("tree-opened");
+                            siblings.addClass("tree-closed");
+                            siblings.removeClass(options.activeSelector);
+                            siblings.find('> ul').slideUp(options.delay);
+                        }
+
+                        li.find('> ul').slideToggle(options.delay);
+                        li.toggleClass('tree-opened');
+                        li.toggleClass('tree-closed');
+                        li.toggleClass(options.activeSelector);
+                    });
+
+                    $(this).find('> ul').treemenu(options);
+                } else {
+                    $(this).addClass('tree-empty');
+                }
+            });
+
+            if (options.openActive) {
+                var cls = this.attr("class");
+
+                this.find(options.activeSelector).each(function(){
+                    var el = $(this).parent();
+
+                    while (el.attr("class") !== cls) {
+                        el.find('> ul').show();
+                        if(el.prop("tagName") === 'UL') {
+                            el.show();
+                        } else if (el.prop("tagName") === 'LI') {
+                            el.removeClass('tree-closed');
+                            el.addClass("tree-opened");
+                            el.show();
+                        }
+
+                        el = el.parent();
+                    }
+                });
+            }
+
+            //this.expand({delay:0},0);
+            //max_depth = g_depth;
+            //this.collapse({delay:0});
+            //g_depth = 0;
+
+            return this;
+        }
+    })(jQuery);
+
+var g_depth = 0;
+var max_depth = 400
+
+function depth(step){
+    g_depth = g_depth + step;
+    g_depth = g_depth < 0 ? 0 : g_depth;
+    g_depth = g_depth > max_depth ? max_depth : g_depth;
+    $(".tree").depth({delay:0},g_depth);
+}
+
+function expand(){
+    g_depth = 0     
+    $(".tree").expand({delay:0},0);
+}
+
+function collapse(){
+    $(".tree").collapse({delay:0});
+    g_depth = 0;    
+}
+
+$(function(){
+    $(".tree").treemenu({delay:0}).openActive();
+});
+
+</script>
+
+
+
+ <div style='min-height: 400px'></div>
+
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+% Examples:
+age(patientGenerated, 1).
+sex(patientGenerated, 1).
+cp(patientGenerated, 1).
+trestbps(patientGenerated, 1).
+chol(patientGenerated, 1).
+fbs(patientGenerated, 1).
+restecg(patientGenerated, 1).
+thalach(patientGenerated, 1).
+exang(patientGenerated, 1).
+oldpeak(patientGenerated, 1).
+slope(patientGenerated, 1).
+ca(patientGenerated, 1).
+thal(patientGenerated, 1).
+target(patientGenerated, 1).

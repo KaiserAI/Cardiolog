@@ -1,0 +1,78 @@
+% QUERY:I would like to know if
+     All done.
+
+	ANSWER:	1 (in 9.289 ms)
+
+JUSTIFICATION_TREE:
+All done, because
+    Dr. Smith said that patient93 is at the gates of heaven, because
+        hasn`t exercise-induced angina, and
+        has normal blood flow, and
+        has exercise-induced ST depression of 0.6, and
+        has a cholesterol level of 141 mg/dl.
+    Dr. Smith  said that patient3 is fresh like a daisy, because
+        hasn`t exercise-induced angina, and
+        has normal blood flow, and
+        has exercise-induced ST depression of 3.5, and
+        has a cholesterol level of 250 mg/dl.
+    Dr. Smith  said that patient295 is fresh like a daisy, because
+        hasn`t exercise-induced angina, and
+        has normal blood flow, and
+        has exercise-induced ST depression of 0, and
+        has a cholesterol level of 157 mg/dl.
+    Dr. Smith  said that patient302 is fresh like a daisy, because
+        hasn`t exercise-induced angina, and
+        has normal blood flow, and
+        has exercise-induced ST depression of 0, and
+        has a cholesterol level of 175 mg/dl.
+    Dr. Johnson  said that patient248 is fresh like a daisy, because
+        is 52 years old, and
+        has an upsloping ST segment during peak exercise, and
+        has a resting blood pressure of 125 mm/HG, and
+        is male.
+    Dr. Johnson  said that patient295 is fresh like a daisy, because
+        is 41 years old, and
+        has an upsloping ST segment during peak exercise, and
+        has a resting blood pressure of 120 mm/HG, and
+        is male.
+    Dr. Johnson  said that patient302 is fresh like a daisy, because
+        is 38 years old, and
+        has an upsloping ST segment during peak exercise, and
+        has a resting blood pressure of 138 mm/HG, and
+        is male.
+    Dra. Lee  said that patient93 is fresh like a daisy, because
+        has normal blood flow, and
+        has non-anginal pain, and
+        has a maximum heart rate of 175, and
+        has exercise-induced ST depression of 0.6.
+    Dra. Lee  said that patient302 is fresh like a daisy, because
+        has normal blood flow, and
+        has non-anginal pain, and
+        has a maximum heart rate of 173, and
+        has exercise-induced ST depression of 0.
+    Dra. Lee said that patient3 is at the gates of heaven, because
+        has normal blood flow, and
+        has non-anginal pain, and
+        has a maximum heart rate of 187, and
+        has exercise-induced ST depression of 3.5.
+    Dra. Davis  said that patient93 is fresh like a daisy, because
+        has non-anginal pain, and
+        has exercise-induced ST depression of 0.6, and
+        has a flat ST segment during peak exercise, and
+        has a normal fasting blood sugar level.
+    Dra. Davis  said that patient3 is fresh like a daisy, because
+        has non-anginal pain, and
+        has exercise-induced ST depression of 3.5, and
+        has a maximum heart rate of 187, and
+        hasn`t exercise-induced angina.
+    Dra. Davis said that patient118 is at the gates of heaven, because
+        is asymptomatic, and
+        has a maximum heart rate of 132, and
+        has a reversible defect.
+The global constraints hold.
+
+MODEL:
+{ diagnosis(patient93,1,Dr. Smith),  exang(patient93,0),  thal(patient93,1),  oldpeak(patient93,0.6),  chol(patient93,141),  diagnosis(patient3,0,Dr. Smith),  exang(patient3,0),  thal(patient3,1),  oldpeak(patient3,3.5),  chol(patient3,250),  diagnosis(patient295,0,Dr. Smith),  exang(patient295,0),  thal(patient295,1),  oldpeak(patient295,0),  chol(patient295,157),  diagnosis(patient302,0,Dr. Smith),  exang(patient302,0),  thal(patient302,1),  oldpeak(patient302,0),  chol(patient302,175),  diagnosis(patient248,0,Dr. Johnson),  age(patient248,52),  slope(patient248,0),  trestbps(patient248,125),  sex(patient248,1),  diagnosis(patient295,0,Dr. Johnson),  age(patient295,41),  slope(patient295,0),  trestbps(patient295,120),  sex(patient295,1),  diagnosis(patient302,0,Dr. Johnson),  age(patient302,38),  slope(patient302,0),  trestbps(patient302,138),  sex(patient302,1),  diagnosis(patient93,0,Dra. Lee),  cp(patient93,2),  thalach(patient93,175),  diagnosis(patient302,0,Dra. Lee),  cp(patient302,2),  thalach(patient302,173),  diagnosis(patient3,1,Dra. Lee),  cp(patient3,2),  thalach(patient3,187),  diagnosis(patient93,0,Dra. Davis),  slope(patient93,1),  fbs(patient93,0),  diagnosis(patient3,0,Dra. Davis),  diagnosis(patient118,1,Dra. Davis),  cp(patient118,3),  thalach(patient118,132),  thal(patient118,3) }
+BINDINGS: 
+List equal [diagnosis(patient93,1,Dr. Smith),diagnosis(patient3,0,Dr. Smith),diagnosis(patient295,0,Dr. Smith),diagnosis(patient302,0,Dr. Smith),diagnosis(patient248,0,Dr. Johnson),diagnosis(patient295,0,Dr. Johnson),diagnosis(patient302,0,Dr. Johnson),diagnosis(patient93,0,Dra. Lee),diagnosis(patient302,0,Dra. Lee),diagnosis(patient3,1,Dra. Lee),diagnosis(patient93,0,Dra. Davis),diagnosis(patient3,0,Dra. Davis),diagnosis(patient118,1,Dra. Davis)] ? 
+
