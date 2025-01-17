@@ -17,7 +17,7 @@ def save_rules_to_file(tree, feature_names, df, filename, idx):
     """
     Save rules to a .pl file with s(CASP) compatible syntax.
     """
-    doctors = ["Dr. Smith", "Dr. Johnson", "Dr. Lee", "Dr. Brown", "Dr. Taylor", "Dr. Davis"]  # Lista de nombres
+    doctors = ["'Dr. Smith'", "'Dr. Johnson'", "'Dra. Lee'", "'Dr. Brown'", "'Dra. Taylor'", "'Dra. Davis'"]  # Lista de nombres
     doctor_name = doctors[idx % len(doctors)]  # Seleccionar un nombre basado en el índice
 
     with open(filename, 'w') as f:
@@ -142,6 +142,8 @@ def merge_examples_and_rules(example_lines, rule_files, output_file, explainabil
         f.write(f"\n% Explainability information from {explainability_file}:\n")
         with open(explainability_file, 'r') as ef:
             f.write(ef.read())
+
+
 
 
 def merge_rules_and_explainability(rule_files, output_file, explainability_file, consult_file):

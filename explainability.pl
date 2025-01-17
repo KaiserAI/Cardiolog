@@ -1,7 +1,9 @@
-#pred diagnosis(X,1,Y) :: 'Doctor @(Y) said that @(X) is at the gates of heaven'.
-#pred diagnosis(X,0,Y) :: 'Doctor @(Y) said that @(X) is fresh like a daisy'.
+#pred findall(X, Y, Z) :: 'All done'.
 
-#pred age(X, Age) :: 'has @(Age) years old'.
+#pred diagnosis(X,1,Y) :: '@(Y) said that @(X) is at the gates of heaven'.
+#pred diagnosis(X,0,Y) :: '@(Y)  said that @(X) is fresh like a daisy'.
+
+#pred age(X, Age) :: 'is @(Age) years old'.
 
 #pred sex(X, 1) :: 'is male'.
 #pred sex(X, 0) :: 'is female'.
@@ -24,8 +26,8 @@
 
 #pred thalach(X, HR) :: 'has a maximum heart rate of @(HR)'.
 
-#pred exang(X, 1) :: 'has exercise-induced angina: yes'.
-#pred exang(X, 0) :: 'has exercise-induced angina: no'.
+#pred exang(X, 1) :: 'has exercise-induced angina'.
+#pred exang(X, 0) :: 'hasn`t exercise-induced angina'.
 
 #pred oldpeak(X, Depression) :: 'has exercise-induced ST depression of @(Depression)'.
 

@@ -41,7 +41,7 @@ def consulta_con_pacientes_de_ejemplo(df):
     # Rute to scasp
     scasp_path = '/home/walter/.ciao/build/bin/scasp'  # put yours here
     # Execute
-    command = f'bash -i -c "{scasp_path} {final_prolog_file} --tree --html --human"'
+    command = f'bash -i -c "{scasp_path} {final_prolog_file} --tree --html --human --short"'
     output_file = 'output_consult.txt'
     execute_command(command, output_file)
 
