@@ -1,36 +1,52 @@
-## Inspiration
-It was in 2020, during the spread of the coronavirus pandemic, that everything changed. **Other illnesses, like cardiovascular diseases, were pushed** aside as hospitals struggled with an overwhelming lack of staff. This was one of the heartbreaking factors that led **to the loss of my grandfather**. Sadly, this is still happening today. Wouldn’t it be meaningful to help our communities and save lives by **creating a system that reasons like a group of doctor—ones** that can support those who need care the most?
+# 🫀 Cardiolog: Explainable AI for Medical Diagnosis
+### Neuro-Symbolic System combining Machine Learning & Logical Reasoning
 
-## What it does
-We’re not cardiologists, and we didn’t have the specialized knowledge to model cardiovascular diseases accurately. That’s why we decided to **combine machine learning with an automatic reasoner**. **We created an algorithm that translates the trees of a Random Forest model into s(CASP)-compatible rules**. We trained the Random Forest using a cardiac disease dataset, where each tree represents a doctor. We also developed a function to **model patients into s(CASP) format** and perform the query, allowing the system to reason and provide a diagnosis based on the criteria and experience of each doctor. 
+![Python](https://img.shields.io/badge/Language-Python_3.x-3776AB?logo=python&logoColor=white)
+![Logic](https://img.shields.io/badge/Reasoning-s(CASP)-blue)
+![ML](https://img.shields.io/badge/AI-Scikit_Learn-F7931E?logo=scikit-learn)
+![Focus](https://img.shields.io/badge/Focus-XAI_%2F_HealthTech-green)
 
-Not content with that, we decided to apply **explainability** to our model through s(CASP), so instead of just a bunch of logical rules, it **explains in natural language** what each doctor said for each patient.
-- **We can enter new patients**: Automatic translation to s(CASP).
-- **Consult for our disease**: The reasoner will display the result in our web browser using natural language.
-- **Consult for patients in our database**: Select a percentage of the database, automatically translate the patient, and infer using s(CASP).
+> **Cardiolog** is a diagnostic support system that addresses the "Black Box" problem in medical AI. Unlike standard predictive models that output a probability without context, Cardiolog uses a **Neuro-Symbolic architecture** to provide transparent, human-readable justifications for every diagnosis using **Answer Set Programming (ASP)**.
 
-## How we built it
-We **trained a random forest** in Python on a cardiac dataset and then **translated each tree into s(CASP) rules using our custom algorithm**. We also created an algorithm to translate patients from the dataset into s(CASP) format and a function to request data when introducing a new patient. To improve explainability, we implemented a system to **translate s(CASP) rules into natural language**. We developed a **main program that integrates all** of the above functionalities. Finally, we set up a **consultation system in Python that communicates with s(CASP)** and provides the results in an HTML file, which is automatically opened in a **web browser**.
+---
 
-## Challenges we ran into
-**Translating** from trees to s(CASP) and integrating Python with s(CASP) in the main program were some of the key challenges we faced. Working with medical data and mastering Prolog was no easy feat. Every bug felt like a mini boss battle, and the looming deadlines certainly kept us on our toes.
+## 🚀 Key Features
 
-## Accomplishments that we're proud of
-We’re proud of creating our own algorithms to translate models into s(CASP) and for successfully integrating them with our system.
+* **🔍 Glass-Box Diagnosis:** Converts opaque Random Forest decision trees into transparent logical rules.
+* **🗣️ Natural Language Explanations:** Generates human-readable justifications for why a specific risk level was predicted (e.g., *"Patient has high risk BECAUSE cholesterol > 240 AND age > 50"*).
+* **🧠 Hybrid Intelligence:** Combines the predictive power of **Machine Learning** (Random Forest) with the reasoning capabilities of **Prolog/s(CASP)**.
+* **🧬 Dynamic Patient Modeling:** Allows the ingestion of new patient data, converting clinical variables into logical facts for real-time inference.
 
-## What we learned
-**We learned that s(CASP) and explainability are game-changers**. Prolog helped us think critically and creatively, while our experience working together reinforced that teamwork truly makes a difference.
+---
 
-## What's next for Cardiolog
-What’s next for Cardiolog? We’re refining the system and extending it to other diseases. Our goal is not only to assist healthcare professionals but to redefine how decisions are made in the field.
+## 🏗️ System Architecture
 
-## Challenges we ran into
-Translating from trees to s(CASP) and integrating Python with s(CASP) in the main program were some of the key challenges we faced. Working with medical data and mastering Prolog was no easy feat. Every bug felt like a mini boss battle, and the looming deadlines certainly kept us on our toes. **Also, we are a team from Spain and had to work late nights during exam periods**.
+The system operates on a three-layer architecture designed to translate statistical patterns into logical proofs:
 
-### Wanna tryout?
-Be sure to change this: 
-```python
-   # Rute to scasp
-  scasp_path = '/home/walter/.ciao/build/bin/scasp'  # put yours here
-```
-in `Main` -> `consulta_con_pacientes_introducido()`
+1.  **Learning Layer (Python/Scikit-learn):**
+    * Trains a **Random Forest Classifier** on the Cleveland Heart Disease dataset.
+    * Extracts decision paths from the ensemble of trees.
+
+2.  **Translation Layer (Custom Algorithm):**
+    * **Tree-to-Logic Compiler:** A specialized algorithm (`translator.py`) iterates through the decision trees and transpiles them into **s(CASP)** compatible predicates.
+    * Each tree in the forest acts as an independent "doctor" offering a logical opinion.
+
+3.  **Reasoning Layer (s(CASP)):**
+    * Aggregates the logical rules and patient data (facts).
+    * Executes a query to find the **Answer Set** (the most stable model).
+    * Outputs a justification tree rendered as HTML for the end-user.
+
+---
+
+## 🛠️ Project Structure
+
+```text
+/
+├── cardiolog/           # Source code package
+│   ├── translator.py    # Core logic: Compiles Decision Trees to Prolog
+│   ├── main.py          # Application entry point and orchestrator
+│   └── ...
+├── data/                # Clinical datasets (CSV)
+├── prolog/              # Generated logical rules and knowledge base
+├── templates/           # HTML templates for visualization
+└── output/              # Query results and reasoning trees

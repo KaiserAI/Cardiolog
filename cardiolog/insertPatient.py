@@ -22,7 +22,7 @@ def translate_and_insert_new_patient(patient_id, columns):
         examples.append(f"{col_name}({patient_name}, {value}).")
 
     # Create file name
-    output_file = f"patient{patient_id}.pl"
+    output_file = f"prolog/patient{patient_id}.pl"
 
     # Save relations in file
     with open(output_file, 'w') as f:

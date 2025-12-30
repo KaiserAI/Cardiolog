@@ -9,6 +9,7 @@ from translator import save_rules_to_file, save_examples_to_prolog, merge_exampl
 from consultScasp import execute_command
 from insertPatient import translate_and_insert_new_patient
 import webbrowser
+from cardiolog.config import SCASP_PATH
 
 
 def menu():
@@ -27,23 +28,23 @@ def insert_new_patient(columns):
 
 
 def query_with_example_patients(df):
-    rule_files = 'rules_with_explainability.pl'
+    rule_files = 'prolog/rules_with_explainability.pl'
     # Save examples in Prolog format
     dataset_examples = save_examples_to_prolog(df, percentage=2)
 
     # Merge examples and rules into a single file
-    final_prolog_file = "final_dataset_and_rules_with_explainability.pl"
-    explainability_file = "explainability.pl"
-    consult_file = "consult.pl"
+    final_prolog_file = "prolog/final_dataset_and_rules_with_explainability.pl"
+    explainability_file = "prolog/explainability.pl"
+    consult_file = "prolog/consult.pl"
     merge_examples_and_rules(dataset_examples, rule_files, final_prolog_file, explainability_file, consult_file)
     print(f"\nFinal file generated: {final_prolog_file}")
 
     # Make consult
     # Route to scasp
-    scasp_path = '/home/walter/.ciao/build/bin/scasp'  # put yours here
+    scasp_path = SCASP_PATH
     # Execute
     command = f'bash -i -c "{scasp_path} {final_prolog_file} --tree --html --human --short"'
-    output_file = 'output_consult.txt'
+    output_file = 'output/output_consult.txt'
     execute_command(command, output_file)
 
     # Open the generated HTML file in the browser
@@ -55,22 +56,21 @@ def query_with_example_patients(df):
 
 
 def query_with_entered_patient():
-    new_patient = "patientGenerated.pl"
+    new_patient = "prolog/patientGenerated.pl"
     # Read the generated patient's file
     with open(new_patient, 'r') as f:
         new_patient_examples = [line.strip() for line in f if line.strip()]  # Convert lines to list and omit empty ones
 
     # Route to scasp
-    scasp_path = '/home/walter/.ciao/build/bin/scasp'  # put yours here
+    scasp_path = SCASP_PATH
     # Execute
-    file_name = 'rules_with_explainability.pl'
+    file_name = 'prolog/rules_with_explainability.pl'
     #merge_rules_and_consult(file_name, consult_file)
-    inter_file = "inter.pl"
-    explainability_file = "explainability.pl"
-    consult_file = "consult.pl"
+    inter_file = "prolog/inter.pl"
+consult_file = "prolog/consult.pl"
     merge_examples_and_rules(new_patient_examples, file_name, inter_file, explainability_file, consult_file)
     command = f'bash -i -c "{scasp_path} {inter_file} --tree --html --human"'
-    output_file = 'output_consult.txt'
+    output_file = 'output/output_consult.txt'
     execute_command(command, output_file)
 
     # Open the generated HTML file in the browser
@@ -104,15 +104,15 @@ def generate_rules(X, y, df):
     # Save rules from the trees to .pl files
     rule_files = []
     for idx, tree in enumerate(random_forest.estimators_):
-        filename = f"diagnosis_{idx + 1}.pl"
+        filename = f"prolog/diagnosis_{idx + 1}.pl"
         print(f"\nGenerating rules for tree {idx + 1}...")
         save_rules_to_file(tree, X.columns, df, filename, idx)
         rule_files.append(filename)
 
     # Merge rules in one file with the explainability
-    prolog_file = "rules_with_explainability.pl"
-    explainability_file = "explainability.pl"
-    consult_file = "consult.pl"
+    prolog_file = "prolog/rules_with_explainability.pl"
+    explainability_file = "prolog/explainability.pl"
+    consult_file = "prolog/consult.pl"
     merge_rules_and_explainability(rule_files, prolog_file, explainability_file, consult_file)
 
 
@@ -123,7 +123,7 @@ def load_dataset():
         "exang", "oldpeak", "slope", "ca", "thal", "target"
     ]
 
-    df = pd.read_csv("Heart_disease_cleveland_new.csv", header=0, names=columns)
+    df = pd.read_csv("data/Heart_disease_cleveland_new.csv", header=0, names=columns)
 
     X = df.drop("target", axis=1)
     y = df["target"]
